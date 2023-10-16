@@ -18,6 +18,7 @@ pub fn defineOsMacros(step: *std.Build.Step.Compile) void {
 
 pub fn build(b: *std.Build) void {
     const upstream = b.dependency("tilibs", .{});
+    const zlib = b.dependency("zlib", .{});
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
@@ -63,6 +64,7 @@ pub fn build(b: *std.Build) void {
     libtifiles2.linkLibCpp();
     libtifiles2.linkSystemLibrary("archive");
     libtifiles2.linkSystemLibrary("glib-2.0");
+    libtifiles2.linkLibrary(zlib.artifact("z"));
     libtifiles2.linkLibrary(libticonv);
     libtifiles2.defineCMacro("LOCALEDIR", b.fmt("\"{s}\"", .{
         b.getInstallPath(.{ .custom = "share" }, "locale"),
