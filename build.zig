@@ -18,7 +18,7 @@ pub fn defineOsMacros(step: *std.Build.Step.Compile) void {
 
 pub fn build(b: *std.Build) void {
     const upstream = b.dependency("tilibs", .{});
-    const zlib = b.dependency("zlib", .{});
+    const libarchive = b.dependency("libarchive", .{});
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
@@ -62,9 +62,8 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     libtifiles2.linkLibCpp();
-    libtifiles2.linkSystemLibrary("archive");
     libtifiles2.linkSystemLibrary("glib-2.0");
-    libtifiles2.linkLibrary(zlib.artifact("z"));
+    libtifiles2.linkLibrary(libarchive.artifact("archive"));
     libtifiles2.linkLibrary(libticonv);
     libtifiles2.defineCMacro("LOCALEDIR", b.fmt("\"{s}\"", .{
         b.getInstallPath(.{ .custom = "share" }, "locale"),
@@ -97,7 +96,6 @@ pub fn build(b: *std.Build) void {
             "libtifiles/trunk/src/typesxx.cc",
             "libtifiles/trunk/src/ve_fp.cc",
         },
-        .flags = &.{},
     });
     libtifiles2.installHeadersDirectoryOptions(.{
         .source_dir = upstream.path("libtifiles/trunk/src"),
@@ -174,7 +172,6 @@ pub fn build(b: *std.Build) void {
             "libticables/trunk/src/ticables.cc",
             "libticables/trunk/src/type2str.cc",
         },
-        .flags = &.{},
     });
     libticables2.installHeadersDirectoryOptions(.{
         .source_dir = upstream.path("libticables/trunk/src"),
@@ -244,7 +241,6 @@ pub fn build(b: *std.Build) void {
             "libticalcs/trunk/src/type2str.cc",
             "libticalcs/trunk/src/update.cc",
         },
-        .flags = &.{},
     });
     libticalcs2.installHeadersDirectoryOptions(.{
         .source_dir = upstream.path("libticalcs/trunk/src"),
