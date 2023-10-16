@@ -60,6 +60,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     libtifiles2.linkLibCpp();
+    libtifiles2.linkSystemLibrary("archive");
     libtifiles2.linkSystemLibrary("glib-2.0");
     libtifiles2.linkLibrary(libticonv);
     libtifiles2.defineCMacro("LOCALEDIR", b.fmt("\"{s}\"", .{
