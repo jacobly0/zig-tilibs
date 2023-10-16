@@ -53,6 +53,7 @@ pub fn build(b: *std.Build) void {
             "ticonv.h",
         },
     });
+    b.installArtifact(libticonv);
 
     const libtifiles2 = b.addStaticLibrary(.{
         .name = "tifiles2",
@@ -121,6 +122,7 @@ pub fn build(b: *std.Build) void {
             "typesxx.h",
         },
     });
+    b.installArtifact(libtifiles2);
 
     const libticables2 = b.addStaticLibrary(.{
         .name = "ticables2",
@@ -182,6 +184,7 @@ pub fn build(b: *std.Build) void {
             "timeout.h",
         },
     });
+    b.installArtifact(libticables2);
 
     const libticalcs2 = b.addStaticLibrary(.{
         .name = "ticalcs2",
@@ -267,9 +270,5 @@ pub fn build(b: *std.Build) void {
         },
         .exclude_extensions = &.{"/romdump.h"},
     });
-
-    b.installArtifact(libticonv);
-    b.installArtifact(libtifiles2);
-    b.installArtifact(libticables2);
     b.installArtifact(libticalcs2);
 }
