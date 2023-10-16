@@ -1,0 +1,20 @@
+.{
+    .name = "tilibs",
+    .version = "0.0.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "README.md",
+    },
+    .dependencies = .{
+        .tilibs = .{
+            .hash = "12204da727e63872246fc58cbfdc2eec656b353901309e3128e8aaff25bb40938c90",
+            .url = "git+https://github.com/debrouxl/tilibs.git#c9d377e3ef2af8f435f62896b3f859c1365d7a59",
+        },
+        .zlib = .{
+            .hash = "1220a966d3b01aa5930db45557f5e5923c4c9ab973a27ea8b8e9be9509eb66c1788e",
+            .url = "https://github.com/allyourcodebase/zlib/archive/refs/tags/1.3.0.tar.gz",
+        },
+    },
+}
