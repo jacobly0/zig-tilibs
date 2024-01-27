@@ -1,7 +1,6 @@
 const std = @import("std");
 
-pub fn defineOsMacros(step: *std.Build.Step.Compile) void {
-    const target = step.target_info.target;
+pub fn defineOsMacros(step: *std.Build.Step.Compile, target: std.Target) void {
     switch (target.os.tag) {
         .linux => step.defineCMacro("__LINUX__", null),
         .macos => step.defineCMacro("__MACOSX__", null),
@@ -32,7 +31,7 @@ pub fn build(b: *std.Build) void {
     libticonv.defineCMacro("restrict", "__restrict");
     libticonv.defineCMacro("TICONV_EXPORTS", "");
     libticonv.defineCMacro("VERSION", "\"1.1.6\"");
-    defineOsMacros(libticonv);
+    defineOsMacros(libticonv, target.result);
     libticonv.addCSourceFiles(.{
         .dependency = upstream,
         .files = &.{
@@ -70,7 +69,7 @@ pub fn build(b: *std.Build) void {
     }));
     libtifiles2.defineCMacro("restrict", "__restrict");
     libtifiles2.defineCMacro("VERSION", "\"1.1.8\"");
-    defineOsMacros(libtifiles2);
+    defineOsMacros(libtifiles2, target.result);
     libtifiles2.addCSourceFiles(.{
         .dependency = upstream,
         .files = &.{
@@ -142,7 +141,7 @@ pub fn build(b: *std.Build) void {
         b.getInstallPath(.{ .custom = "share" }, "locale"),
     }));
     libticables2.defineCMacro("VERSION", "\"1.3.6\"");
-    defineOsMacros(libticables2);
+    defineOsMacros(libticables2, target.result);
     libticables2.addCSourceFiles(.{
         .dependency = upstream,
         .files = &.{
@@ -202,7 +201,7 @@ pub fn build(b: *std.Build) void {
     }));
     libticalcs2.defineCMacro("restrict", "__restrict");
     libticalcs2.defineCMacro("VERSION", "\"1.1.10\"");
-    defineOsMacros(libticalcs2);
+    defineOsMacros(libticalcs2, target.result);
     libticalcs2.addCSourceFiles(.{
         .dependency = upstream,
         .files = &.{

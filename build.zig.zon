@@ -9,12 +9,12 @@
     },
     .dependencies = .{
         .libarchive = .{
-            .hash = "1220964e4ec66a7e1dbdc06d919206052bf5097f3ac81e1e44ccdbeb451dc17bfd5b",
-            .url = "git+https://github.com/jacobly0/zig-libarchive.git#0ee04a3606e823c1c10f7eb3a3c1a609bd05fd70",
+            .hash = "12205dbc6b1536d0223d5f92d2a4a362123134a573f26b91a9ca4c06ca52961634e5",
+            .url = "git+https://github.com/jacobly0/zig-libarchive.git#b42a8ab889a98a0d937daa57139b9a92981745da",
         },
         .tilibs = .{
-            .hash = "12204da727e63872246fc58cbfdc2eec656b353901309e3128e8aaff25bb40938c90",
-            .url = "git+https://github.com/debrouxl/tilibs.git#c9d377e3ef2af8f435f62896b3f859c1365d7a59",
+            .hash = "1220d7127261be2a36eaf99865aca9a0c7f45e00e7e90b6944e5b44daf9a0bc2fac9",
+            .url = "git+https://github.com/debrouxl/tilibs.git#f67c953f4a5c931835a06923cd723cd4901937fe",
         },
     },
 }
